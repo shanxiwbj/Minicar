@@ -1,0 +1,3 @@
+structure:
+	setup():
+		Use it to init
