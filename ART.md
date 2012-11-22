@@ -21,7 +21,7 @@
 #编译烧录:
 
 * git clone git://github.com/RT-Thread/ART.git
-* cd ART/software/rt-thread/bsp/stm32f40x/ 
+* cd ART/software/platform/
 * vi rtconfig.py
 	* CROSS_TOOL = 'gcc'
 	* EXEC_PATH = '/usr/local/arm/arm-2011.09/bin/'
@@ -32,7 +32,9 @@
 * sudo apt-get install socat 
 * cd ART/ide/build/
 * ant;ant run
-
+* 程序位置:
+	* rtthread.bin ART/software/platform/
+	* root.bin ART/ide/build/linux/work/hardware/ART/ 
 * IDE编译下载
 	* sudo ./linux/work/arduino
 * 命令编译下载
@@ -50,7 +52,7 @@
 	* 先按住DFU键，然后再插USB线，按RESET键。dfu-util -l 查看ART是否进入DFU模式，是否有DFU设备 (OK)
 	* 使用非root用户，IDE可以编译程序，但不能下载,dfu-util需要root权限，使用root运行IDE，有工具栏路径无法找到的问题 (OK)
 	* 虚拟串口无法链接(/dev/ttyACM0) (OK) 
-	* 自己编译的rtthread.bin下载，sys灯没反应；编译下载的root.bin没反应
+	* 自己编译的rtthread.bin下载(ART/software/platform/ --OK)，sys灯没反应；编译下载的root.bin没反应
 
 #例程代码
 
