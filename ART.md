@@ -18,14 +18,31 @@
 * arm-linux-gnu tools: https://sourcery.mentor.com
 * dfu-util: http://dfu-util.gnumonks.org/ (0.6以上)
 
-#烧录:
+#编译烧录:
 
-* vi rt-thread/bsp/stm32f40x/rtconfig.py
+* git clone git://github.com/RT-Thread/ART.git
+* cd ART/software/rt-thread/bsp/stm32f40x/ 
+* vi rtconfig.py
 	* CROSS_TOOL = 'gcc'
 	* EXEC_PATH = '/usr/local/arm/arm-2011.09/bin/'
 * scons -j4
 * dfu-util -l
-* dfu-util -d 0483:df11 -a 0 -R -s 0x08000000 -D rtthread.bin
+* sudo dfu-util -d 0483:df11 -a 0 -R -s 0x08000000 -D rtthread.bin
+* alias sudo='sudo env PATH=$PATH'
+* cd ART/ide/build/
+* ant;ant run
+* IDE编译下载
+	* sudo ./linux/work/arduino
+* 命令编译下载
+	* cd ART/ide/build/linux/work/hardware/ART/examples
+	* scons --app=blink (root目录下生产blink.mo应用程序文件)
+* RT-thread启动后，自动执行/init.rc 脚本，这个脚本finsh shell执行.
+
+*问题:
+
+	* 先按住DFU键，然后再插USB线，按RESET键。dfu-util -l 查看ART是否进入DFU模式，是否有DFU设备 (OK)
+	* 使用非root用户，IDE可以编译程序，但不能下载,dfu-util需要root权限，使用root运行IDE，有工具栏路径无法找到的问题 (OK)
+	* 
 
 #例程代码
 
