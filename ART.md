@@ -18,6 +18,15 @@
 * arm-linux-gnu tools: https://sourcery.mentor.com
 * dfu-util: http://dfu-util.gnumonks.org/ (0.6以上)
 
+#烧录:
+
+* vi rt-thread/bsp/stm32f40x/rtconfig.py
+	* CROSS_TOOL = 'gcc'
+	* EXEC_PATH = '/usr/local/arm/arm-2011.09/bin/'
+* scons -j4
+* dfu-util -l
+* dfu-util -d 0483:df11 -a 0 -R -s 0x08000000 -D rtthread.bin
+
 #例程代码
 
-*
+
