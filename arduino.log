@@ -79,9 +79,11 @@ Structure:
 Variables:
 
 	Constants:
-		HIGH LOW
-		INPUT OUTPUT INPUT_OUTPUT
-		true false
+		Constants are predefined variables in the Arduino language. They are used to make the programs easier to read.
+		HIGH:(INPUT:3 volts or more OUTPUT: 5 volts) LOW:(INPUT: 2 volts or less OUTPUT 0 volts) (Pin Levels)
+		INPUT OUTPUT INPUT_PULLUP (40ms)
+		if the pin is configured as an INPUT, writing a HIGH value with digitalWrite() will enable an internal 20K pullup resistor. Writing LOW will disable the pullup.
+		true:1 false:0 (Logical Levels)
 		integer constants
 		floating point constants
 
@@ -122,14 +124,14 @@ Variables:
 Functions:
 
 	Digital I/O:
-		pinMode()
+		pinMode(): mode:INPUT OUTPUT INPUT_PULLUP
 		digitalWrite()
 		digitalRead()
 
 	Analog I/O:
-		analogReference()
+		analogReference(): 0-5V
 		analogRead()
-		analgWrite()
+		analogWrite():PWM value: the duty cycle:0-255 approximately 498MHZ
 
 	Advanced I/O:
 		tone()
@@ -139,10 +141,10 @@ Functions:
 		pulseIn()
 
 	Time:
-		millis()
-		micros()
+		millis(): approximately 50 days back to zero 
+		micros(): approximately 70 minutes back to zero 
 		delay():ms
-		delayMicroseconds()
+		delayMicroseconds(): the largest value 16383 
 
 	Math:
 		min()
@@ -202,5 +204,36 @@ Libraries:
 		SPI
 		SoftwareSerial
 		Stepper
+		WiFi
 		Wire
+
+	USB Libraries(Leonardo and Due only):
+		Keyboard
+		Mouse
+	
+	Due only Libraries:
+		Audio
+		Scheduler
+		USBHost
+
+Examples:
+	Basics:
+		BareMinimum
+		Blink
+		DigitalReadSerial
+		AnalogReadSerial
+		Fade: PWM(Pulse Width Modulation):a technique for getting analog results with digital means.
+		ReadAnalogVoltage
+	Digital:
+		Blink Without Delay
+		Button
+		Debounce
+		Button State Change
+		Input Pullup Serial
+		Tone
+		Pitch follower
+		Simple Keyboard
+		Tone4
+	Analog:
+
 
