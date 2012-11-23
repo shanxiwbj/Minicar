@@ -30,7 +30,6 @@
 	* scons -j4
 	* dfu-util -l
 	* sudo dfu-util -d 0483:df11 -a 0 -R -s 0x08000000 -D rtthread.bin
-	* alias sudo='sudo env PATH=$PATH'(IDE)
 	* sudo apt-get install socat 
 	* cd ART/ide/build/
 	* ant;ant run
@@ -39,6 +38,7 @@
 		* root.bin ART/ide/build/linux/work/hardware/ART/ 
 
 	* IDE编译下载
+		* alias sudo='sudo env PATH=$PATH'
 		* sudo ./linux/work/arduino
 	* 命令编译下载
 		* cd ART/ide/build/linux/work/hardware/ART/examples
