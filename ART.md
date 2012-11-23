@@ -50,7 +50,7 @@
 		* finsh />list()
 		*可以使用finsh中的函数直接操作硬件：pinMode(13, 1) --> digitalWrite(13, 1) --> digitalWrite(13, 0)
 
-*问题:
+###问题:
 
 	* 先按住DFU键，然后再插USB线，按RESET键。dfu-util -l 查看ART是否进入DFU模式，是否有DFU设备 (OK)
 	* 使用非root用户，IDE可以编译程序，但不能下载,dfu-util需要root权限，使用root运行IDE，有工具栏路径无法找到的问题 (OK)
