@@ -30,7 +30,7 @@
 	* scons -j4
 	* dfu-util -l
 	* sudo dfu-util -d 0483:df11 -a 0 -R -s 0x08000000 -D rtthread.bin
-	* sudo apt-get install socat 
+	* [sudo apt-get install socat]
 	* cd ART/ide/build/
 	* ant;ant run
 	* 程序位置:
@@ -65,13 +65,14 @@
 	* hello
 	* serial
 
-##RT-Thread 代码：
+## RT-Thread 代码：
 
-	* 环境: ubuntu 12.04 arm-none-eabi-gnu(2011.09)
-	* scons 组织管理代码
-	* rt-thread/tools/building.py
+	> 环境: ubuntu 12.04 arm-none-eabi-gnu(2011.09)
+	> scons 组织管理代码
+	> rt-thread/tools/building.py
 
-	* rt-thread/
+	1. rt-thread/
+
 	├── AUTHORS
 	├── bsp
 	├── components
@@ -84,7 +85,8 @@
 	├── src
 	└── tools
 
-	* rt-thread/components/
+	2. rt-thread/components/
+
 	├── CMSIS
 	├── dfs
 	├── drivers
@@ -99,7 +101,8 @@
 	├── SConscript
 	└── utilities
 
-	* rt-thread/components/external/
+	3. rt-thread/components/external/
+
 	├── cairo
 	├── freetype
 	├── ftk
@@ -112,12 +115,16 @@
 	├── SConscript
 	└── tjpgd1a
 
-	* rt-thread Conf:
+	4. rt-thread Conf:
+
+	./rt-thread/bsp/stm32f40x/SConstruct
+
 	./rt-thread/src/SConscript
 	./rt-thread/libcpu/SConscript
 	./rt-thread/components/*/SConscript
 
-	* rt-thread/bsp/stm32f40x/
+	5. rt-thread/bsp/stm32f40x/
+
 	├── applications
 	├── build
 	├── dfu.sh
@@ -131,39 +138,57 @@
 	├── SConstruct
 	├── stm32_rom.ld
 
-	* stm32f40x Conf:
+	6. stm32f40x Conf:
+
 	./stm32f40x/SConstruct
 	./stm32f40x/Libraries/SConscript
 	./stm32f40x/applications/SConscript
 	./stm32f40x/drivers/SConscript
 	./stm32f40x/SConscript
 
-	* rt-thread.bin 编译及链接:
+	> rt-thread.bin 编译及链接:
 	
-	* rt-thread/bsp/stm32f40x/rtconfig.h: 配置头文件:
+	> rt-thread 启动过程:
 
-	* rt-thread 启动过程:
+	> rt-thread 特性:
 
-	* rt-thread GNU GCC 移植:
+		>> 线程调度
+		>> 线程同步与通信
+		>> 内存管理
+		>> 异常与中断
+		>> 定时器
+		>> I/O设备管理
+		>> FinSH Shell
+		>> 文件系统
+		>> Lwip协议
+		>> RTGUI
 
-	* rt-thread 特性:
-		* 线程调度
-		* 线程同步与通信
-		* 内存管理
-		* 异常与中断
-		* 定时器
-		* I/O设备管理
-		* FinSH Shell
-		* 文件系统
-		* Lwip协议
-		* RTGUI
+## GNU GCC 移植［s3c24x0为例］：
 
+	1. CPU相关移植：
 
+		> 上下文切换代码 ［context_gcc.S］
 
+		> 系统启动代码 ［start_gcc.S］
 
+		> 线程初始栈构造 ［stack.c］
 
+		> 中断处理 ［trap.c、interrupt.c］
 
+		> 串口设备驱动 ［serial.c］
 
+	2. 板级相关移植：
 
+		> 配置头文件 ［rtconfig.h］
 
+		> Kernel启动 ［startup.c］
 
+		> 开发板初始化 ［board.c］
+
+		> 用户初始化文件 ［application.c］
+
+		> 链接脚本文件 ［mini2440_ram.ld］
+
+## rtconfig.h: 配置头文件:
+
+## rt-thread例程：
